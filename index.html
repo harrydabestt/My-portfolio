@@ -1,0 +1,443 @@
+
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Haris Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:400px;
+      height:400px;
+      background:#4f46e5;
+      filter:blur(180px);
+      top:-100px;
+      left:-100px;
+      z-index:-1;
+      opacity:0.5;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:400px;
+      height:400px;
+      background:#00d4ff;
+      filter:blur(180px);
+      bottom:-100px;
+      right:-100px;
+      z-index:-1;
+      opacity:0.3;
+    }
+
+    header{
+      width:100%;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      backdrop-filter:blur(10px);
+      background:rgba(0,0,0,0.25);
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#00d4ff;
+      text-shadow:0 0 15px #00d4ff;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:25px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:#00d4ff;
+      text-shadow:0 0 10px #00d4ff;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:120px 10%;
+      gap:60px;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+      animation:slideLeft 1s ease;
+    }
+
+    .hero-text h1{
+      font-size:65px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .hero-text h1 span{
+      color:#00d4ff;
+      text-shadow:0 0 20px #00d4ff;
+    }
+
+    .typing-wrapper{
+      height:45px;
+      margin-bottom:20px;
+    }
+
+    .typing{
+      color:#00d4ff;
+      border-right:3px solid #00d4ff;
+      white-space:nowrap;
+      overflow:hidden;
+      width:0;
+      display:inline-block;
+      font-size:28px;
+      animation:typingErase 8s steps(40,end) infinite;
+    }
+
+    .hero-text p{
+      line-height:1.8;
+      color:#cfcfcf;
+      max-width:600px;
+      font-size:16px;
+    }
+
+    .btns{
+      margin-top:35px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:#00d4ff;
+      color:black;
+      border-radius:40px;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.4s;
+      box-shadow:0 0 20px #00d4ff;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px) scale(1.05);
+      box-shadow:0 0 40px #00d4ff;
+    }
+
+    .hero-img{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .hero-img img{
+      width:360px;
+      height:360px;
+      object-fit:cover;
+      border-radius:30px;
+      border:4px solid #00d4ff;
+      box-shadow:
+      0 0 20px #00d4ff,
+      0 0 60px rgba(0,212,255,0.5);
+    }
+
+    section{
+      padding:100px 10%;
+    }
+
+    .title{
+      font-size:42px;
+      margin-bottom:50px;
+      text-align:center;
+      color:#00d4ff;
+      text-shadow:0 0 15px #00d4ff;
+    }
+
+    .skills-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      padding:30px;
+      border-radius:25px;
+      transition:0.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 30px rgba(0,212,255,0.5);
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#00d4ff;
+    }
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact p{
+      margin-top:10px;
+      color:#d1d1d1;
+    }
+
+    .socials{
+      margin-top:35px;
+    }
+
+    .socials a{
+      display:inline-block;
+      margin:10px;
+      padding:14px 25px;
+      border-radius:50px;
+      background:#111827;
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      border:1px solid #00d4ff;
+    }
+
+    .socials a:hover{
+      background:#00d4ff;
+      color:black;
+      transform:scale(1.08);
+      box-shadow:0 0 20px #00d4ff;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#8d8d8d;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-20px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes slideLeft{
+      from{
+        opacity:0;
+        transform:translateX(-80px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    @keyframes typingErase{
+
+      0%{
+        width:0;
+      }
+
+      25%{
+        width:100%;
+      }
+
+      50%{
+        width:100%;
+      }
+
+      75%{
+        width:0;
+      }
+
+      100%{
+        width:0;
+      }
+    }
+
+    @media(max-width:900px){
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:45px;
+      }
+
+      .typing{
+        font-size:22px;
+      }
+
+      .hero-img img{
+        width:280px;
+        height:280px;
+      }
+
+      nav{
+        display:none;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="logo">Haris</div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+  </header>
+
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+
+      <h1>
+        Hello, I'm <span>Haris</span>
+      </h1>
+
+      <div class="typing-wrapper">
+        <h2 class="typing">
+          Discord Moderator • Server Developer • Editor
+        </h2>
+      </div>
+
+      <p>
+        I moderate and develop Discord servers, create organized
+        communities, manage systems professionally and also do editing work.
+        Passionate about building stylish communities with smooth experiences
+        and aesthetic designs.
+      </p>
+
+      <div class="btns">
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+
+    </div>
+
+    <div class="hero-img">
+
+      <!-- Put your image in the same folder -->
+      <img src="161a3db2209f7b0447c380fbfebb7920.jpg" alt="Haris">
+
+    </div>
+
+  </section>
+
+  <section id="skills">
+
+    <h2 class="title">My Skills</h2>
+
+    <div class="skills-container">
+
+      <div class="card">
+        <h3>Discord Server Development</h3>
+
+        <p>
+          Creating advanced Discord servers with organized channels,
+          permissions, bots, role systems and aesthetic layouts.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Discord Moderation</h3>
+
+        <p>
+          Managing communities professionally while keeping servers
+          active, organized and safe for members.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Editing</h3>
+
+        <p>
+          Creating stylish edits with smooth transitions,
+          effects and aesthetic visuals.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="contact" id="contact">
+
+    <h2 class="title">Contact Me</h2>
+
+    <p>Email: harisyousuf59@gmail.com</p>
+
+    <p>Discord Username: harrydabestt</p>
+
+    <div class="socials">
+
+      <a href="https://www.instagram.com/harrydabestt/" target="_blank">
+        Instagram
+      </a>
+
+      <a href="https://discord.com/users/1368197924684828774" target="_blank">
+        Discord
+      </a>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Haris Portfolio | All Rights Reserved
+  </footer>
+
+</body>
+</html>
